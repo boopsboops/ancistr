@@ -1,0 +1,32 @@
+---
+title: "Genetic identification of _Ancistrus_ sp. (3), the common bristlenose pleco"
+format:
+  html:
+    code-fold: true
+    fig-width: 11
+    fig-height: 12
+---
+
+For a demonstration of a line plot on a polar axis, see @ancistrus-tree and also @ancistrus-table . We carried out the analysis on `r Sys.Date()`.
+
+```{r run.code}
+#| include: true
+#| output: false
+# run ancistrus phylo script
+source(here::here("scripts/generate-phylo.R"))
+```
+
+```{r plot.tree}
+#| label: "ancistrus-tree"
+#| echo: false
+#| fig-cap: "This is an _Ancistrus_ tree."
+print(p)
+```
+
+```{r plot.table}
+#| label: ancistrus-table
+#| tbl-cap: "This is an _Ancistrus_ table."
+
+knitr::kable(ancistrus.aligned.dist.rc.filt.tidy,digits=1)
+```
+
