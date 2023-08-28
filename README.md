@@ -7,7 +7,7 @@
 
 ### BACKGROUND
 
-This README file describes the software requirements to run the `ancistrus-phylo` analysis on an Ubuntu system. The R script `scripts/generate-phylo.R` searches the [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore) nucleotide database for _Ancistrus_ sequence data (COI gene), and then runs a phylogenetic and sequence similarity analysis to estimate the closest relatives of the common bristlenose catfish [_Ancistrus_ sp. (3)](https://www.planetcatfish.com/ancistrus_cf_cirrhosus). The [Quarto](https://quarto.org/) script `ancistrus-phylo.qmd` executes this R script and generates an html output report `ancistrus-phylo.html` (not committed to git).
+This README file describes the software requirements to run the `ancistr` analysis on an Ubuntu system. The R script `scripts/ancistr.R` searches the [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore) nucleotide database for _Ancistrus_ sequence data (COI gene), and then runs a phylogenetic and sequence similarity analysis to estimate the closest relatives of the common bristlenose catfish [_Ancistrus_ sp. (3)](https://www.planetcatfish.com/ancistrus_cf_cirrhosus). The [Quarto](https://quarto.org/) script `ancistr.qmd` executes this R script and generates an html output report `ancistr.html` (not committed to git).
 
 
 ### INSTALLATION
@@ -41,8 +41,8 @@ Clone this repository and install R packages (may take up to one hour):
 
 ```bash
 # clone project repository
-git clone https://github.com/boopsboops/ancistrus-phylo.git
-cd ancistrus-phylo
+git clone https://github.com/boopsboops/ancistr.git
+cd ancistr
 # install R packages
 Rscript -e "renv::restore()"
 ```
@@ -53,25 +53,25 @@ Rscript -e "renv::restore()"
 Run the analysis and generate the report (may take up to five minutes):
 
 ```bash
-# creates file 'ancistrus-phylo.html'
+# creates file 'ancistr.html'
 # previous analyses are kept in dated folders in 'results/'
-quarto render ancistrus-phylo.qmd
+quarto render ancistr.qmd
 ```
 
 
 ### CONTENTS (A-Z)
 
-* **`ancistrus-phylo_files/`** - Temp output files created by quarto. Ignored by git.
+* **`ancistr_files/`** - Temp output files created by quarto. Ignored by git.
 * **`assets/`** - Required files.
     - `ancistrus-coi.csv` - comma delimited table of in-house COI sequence data
     - `Ancistrus_sp(3).jpg` - photo of the bristlenose catfish
 * **`renv/`** - Settings for the R environment.
 * **`results/`** - Storage directory of previous analyses. Ignored by git.
 * **`scripts/`** - R scripts.
-    - `generate-phylo.R` - script to run the GenBank search and phylogenetic analysis
+    - `ancistr.R` - script to run the GenBank search and phylogenetic analysis
     - `load-libs-funs.R` - script loading up libraries and custom functions
-* `ancistrus-phylo.qmd` - quarto file to compile report and render as html
-* `ancistrus-phylo.html` - report output html file (ignored by git)
+* `ancistr.qmd` - quarto file to compile report and render as html
+* `ancistr.html` - report output html file (ignored by git)
 * `LICENSE` - Legal stuff
 * `README.md` - This file
 * `renv.lock` - R packages required and managed by renv

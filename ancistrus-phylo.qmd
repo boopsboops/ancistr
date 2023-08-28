@@ -27,8 +27,8 @@ The true identity of the wild ancestor(s) of [_Ancistrus_ sp. (3)](https://www.p
 #| eval: true
 #| echo: true
 #| output: false
-# https://github.com/boopsboops/ancistrus-phylo/blob/main/scripts/generate-phylo.R
-source(here::here("scripts/generate-phylo.R"))
+# https://github.com/boopsboops/ancistr/blob/main/scripts/ancistr.R
+source(here::here("scripts/ancistr.R"))
 ```
 
 The analysis was conducted on `r today.long` using GenBank v`r gb.version`. A total of `r n.ancistrus` described _Ancistrus_ species were obtained, plus multiple undescribed or unidentified _Ancistrus_ spp. The New Zealand aquarium specimen of _Ancistrus_ sp. (3) can be seen highlighted in red in @fig-tree, clustered with its closest relatives. Sequence similarity (genetic distance) of the top ten closest species is reported in @tbl-dist.
