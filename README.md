@@ -61,7 +61,6 @@ quarto render ancistr.qmd
 
 ### CONTENTS (A-Z)
 
-* **`ancistr_files/`** - Temp output files created by quarto. Ignored by git.
 * **`assets/`** - Required files.
     - `ancistrus-coi.csv` - comma delimited table of in-house COI sequence data
     - `Ancistrus_sp(3).jpg` - photo of the bristlenose catfish
