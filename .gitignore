@@ -40,5 +40,5 @@ vignettes/*.pdf
 
 # added
 results
-scripts/compile-ancistrus_files
-scripts/compile-ancistrus.html
+ancistrus-phylo_files
+ancistrus-phylo.html
