@@ -10,7 +10,11 @@ library("rentrez")
 library("bold")
 library("traits")
 library("ggtree")
+library("rmarkdown")
 library("knitr")
+library("yaml")
+library("BiocManager")
+library("BiocVersion")
 
 # load funs
 source("https://raw.githubusercontent.com/boopsboops/UTILITIES/main/RScripts/tab2fas.R")
@@ -32,7 +36,7 @@ clean_ncbi <- function(df) {
     rename(sciNameOrig=taxon,notesGenBank=gene_desc,dbid=gi_no,gbAccession=acc_no,catalogNumber=specimen_voucher,
     publishedAs=paper_title,publishedIn=journal,publishedBy=first_author,date=uploaded_date,decimalLatitude=lat,decimalLongitude=lon,nucleotides=sequence)
     return(df.clean)
-    }
+}
 
 
 # CLEAN BOLD
@@ -48,4 +52,13 @@ clean_bold <- function(df) {
     select(source,processidUniq,genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,nucleotides,length) %>%
     rename(dbid=processidUniq,gbAccession=genbank_accession,sciNameOrig=species_name,decimalLatitude=lat,decimalLongitude=lon,institutionCode=institution_storing,catalogNumber=catalognum)
     return(df.clean)
+}
+
+
+# COUNT GAP CHARACTERS
+prop_gaps <- function(x) {
+    lx <- length(x)
+    gx <- length(which(x == "-"))
+    rx <- gx/lx
+    return(rx)
 }

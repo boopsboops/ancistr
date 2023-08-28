@@ -1,32 +1,53 @@
 ---
-title: "Genetic identification of _Ancistrus_ sp. (3), the common bristlenose pleco"
+title: "Genetic identification of the common bristlenose"
+author: "Rupert A. Collins"
+theme: "cosmo"
 format:
   html:
+    self-contained: true
     code-fold: true
     fig-width: 11
     fig-height: 12
+    fig-cap-location: "top"
+    fig-format: "svg"
+    fig-align: "left"
+    tbl-align: "left"
 ---
 
-For a demonstration of a line plot on a polar axis, see @ancistrus-tree and also @ancistrus-table . We carried out the analysis on `r Sys.Date()`.
+![_Ancistrus_ sp. (3) from the aquarium trade.](assets/Ancistrus_sp(3).jpg){#fig-sp3}
+
+### INTRODUCTION
+
+The true identity of the wild ancestor(s) of [_Ancistrus_ sp. (3)](https://www.planetcatfish.com/ancistrus_cf_cirrhosus), AKA the common bristlenose catfish (@fig-sp3), is not known. Here we use phylogenetic techniques to discover the closest potential relatives of this common aquarium species. The analysis uses maternally inherited mitochondrial DNA sequences publicly available on the [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore) nucleotide database. Sequence data for the cytochrome _c_ oxidase I (COI) "DNA barcode" gene were downloaded from GenBank and the data cleaned and duplicates removed. A phylogenetic tree was made using maximum likelihood, and genetic distances (sequence similarity) were calculated. An individual of the common bristlenose was obtained from an aquarium store in New Zealand in October 2009 to act as a reference for the traded species.
+
+
+### RESULTS
 
 ```{r run.code}
-#| include: true
+#| eval: true
+#| echo: true
 #| output: false
-# run ancistrus phylo script
+# https://github.com/boopsboops/ancistrus-phylo/blob/main/scripts/generate-phylo.R
 source(here::here("scripts/generate-phylo.R"))
 ```
 
-```{r plot.tree}
-#| label: "ancistrus-tree"
+The analysis was conducted on `r today.long` using GenBank v`r gb.version`. A total of `r n.ancistrus` described _Ancistrus_ species were obtained, plus multiple undescribed or unidentified _Ancistrus_ spp. The New Zealand aquarium specimen of _Ancistrus_ sp. (3) can be seen highlighted in red in @fig-tree, clustered with its closest relatives. Sequence similarity (genetic distance) of the top ten closest species is reported in @tbl-dist.
+
+```{r}
+#| eval: true
 #| echo: false
-#| fig-cap: "This is an _Ancistrus_ tree."
+#| output: true
+#| label: fig-tree
+#| fig-cap: "Maximum likelihood phylogenetic tree of _Ancistrus_ COI sequence data mined from NCBI GenBank. Tree was made using the R package [Phangorn](https://klausvigo.github.io/phangorn/index.html), and was rooted on _Lasiancistrus_ (subsequently removed)."
 print(p)
 ```
 
-```{r plot.table}
-#| label: ancistrus-table
-#| tbl-cap: "This is an _Ancistrus_ table."
-
-knitr::kable(ancistrus.aligned.dist.rc.filt.tidy,digits=1)
+```{r}
+#| eval: true
+#| echo: false
+#| output: true
+#| label: tbl-dist
+#| tbl-cap: "Uncorrected genetic distances (sequence similarity) of the top ten closest species in the analysis to the reference sequence of _Ancistrus_ sp. (3) (New Zealand trade). Accession codes can be searched for more information at [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore)."
+knitr::kable(ancistrus.aligned.trimmed.dist.rc.filt.tidy,digits=1)
 ```
 
