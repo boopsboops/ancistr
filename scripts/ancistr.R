@@ -9,7 +9,7 @@ source(here::here("scripts/load-libs-funs.R"))
 ### RETRIEVE DATA ###
 
 # search ncbi genbank
-ancistrus.results <- rentrez::entrez_search(db="nuccore", term="(Ancistrus[ORGN] AND COI) OR (Ancistrus[ORGN] AND COX1) OR (Lasiancistrus[ORGN] AND COI) AND (490:1700[SLEN])", retmax=99999, use_history=FALSE)
+ancistrus.results <- rentrez::entrez_search(db="nuccore", term="(Ancistrus[ORGN] AND COI) OR (Ancistrus[ORGN] AND COX1) OR (Lasiancistrus[ORGN] AND COI) AND (490:1700[SLEN])", retmax=9999, use_history=FALSE)
 #ancistrus.results <- entrez_search(db="nuccore", term="(Ancistrus[ORGN] AND cytb) OR (Lasiancistrus[ORGN] AND cytb)", retmax=99999, use_history=FALSE)
 
 # get ncbi metadata - may need to chunk these in future if these are more than ~200 hits
@@ -76,7 +76,7 @@ n.ancistrus <- ancistrus.tab.merged.derep.house.labels %>%
     distinct(species) %>% 
     pull() %>% 
     length()
-gb.version <- read.table("ftp://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
+gb.version <- read.table("https://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
 
 ### PHYLOGENETIC ANALYSIS ###
 
